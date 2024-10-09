@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>弦楽器音階マスター</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- VexFlowライブラリの読み込み -->
+    <script src="https://unpkg.com/vexflow/releases/vexflow-min.js"></script>
+    <!-- WaveSurfer.jsライブラリの読み込み -->
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+    <!-- WaveSurfer.jsのマイクプラグイン -->
+    <script src="https://unpkg.com/wavesurfer.js/dist/plugin/wavesurfer.microphone.min.js"></script>
+    <!-- scales.jsの読み込み -->
+    <script src="scales.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <!-- script.jsの読み込み -->
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>弦楽器音階マスター</h1>
+
+        <!-- メニュー画面 -->
+        <div id="menu" class="section visible">
+            <input type="text" id="username" placeholder="ユーザーネームを入力" required>
+            <button id="start-game">ゲーム開始！</button>
+            <button id="options-button">オプション</button>
+            <button id="view-highscore">ハイスコアを見る</button>
+        </div>
+
+        <!-- オプション画面 -->
+        <div id="options-area" class="section hidden">
+            <h2>オプション</h2>
+            <div class="option-item">
+                <label for="metronome-sound">メトロノームの音:</label>
+                <select id="metronome-sound">
+                    <option value="metronome1.mp3">音1</option>
+                    <option value="metronome2.mp3">音2</option>
+                    <option value="metronome3.mp3">音3</option>
+                </select>
+                <button id="test-metronome-sound">テスト</button>
+            </div>
+            <div class="option-item">
+                <label for="metronome-volume">メトロノームの音量:
+                    <span id="volume-value">0.5</span>
+                </label>
+                <input type="range" id="metronome-volume" min="0" max="1" step="0.01" value="0.5">
+            </div>
+            <div class="option-item">
+                <label for="font-size">文字の大きさ:</label>
+                <select id="font-size">
+                    <option value="small">小</option>
+                    <option value="medium" selected>中</option>
+                    <option value="large">大</option>
+                </select>
+            </div>
+            <div class="option-item">
+                <label for="background-style">背景のスタイル:</label>
+                <select id="background-style">
+                    <option value="sakura">桜</option>
+                    <option value="washi">和紙</option>
+                    <option value="ukiyoe">浮世絵</option>
+                </select>
+            </div>
+            <button id="back-to-menu-options">メニューに戻る</button>
+        </div>
+
+        <!-- ゲーム画面 -->
+        <div id="game-area" class="section hidden">
+            <div class="game-controls">
+                <h2>音階を選択してください</h2>
+                <div class="scale-tiles"></div>
+                <button id="select-scale" disabled>選択</button>
+            </div>
+            <div class="game-controls hidden" id="tuning-area">
+                <div class="tempo-control">
+                    <label for="tempo">テンポ (BPM): <span id="tempo-value">60</span></label>
+                    <input type="range" id="tempo" min="40" max="200" value="60">
+                </div>
+                <button id="start-performance">演奏開始！</button>
+                <div id="tuning-result">現在の音程: <span id="frequency">-</span> Hz</div>
+                <div id="score-board">スコア: <span id="score">0</span></div>
+                <div id="note-display">
+                    <h3>次の音を弾いてください:</h3>
+                    <div id="vexflow-container"></div>
+                </div>
+                <div id="waveform-container"></div>
+                <div class="game-buttons">
+                    <button id="back-to-menu-game">メニューに戻る</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ハイスコア画面 -->
+        <div id="highscore-area" class="section hidden">
+            <h2>ハイスコア</h2>
+            <div id="highscore-list">ハイスコアはまだありません。</div>
+            <button id="back-to-menu-highscore">メニューに戻る</button>
+        </div>
+    </div>
+</body>
+</html>

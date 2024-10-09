@@ -1,0 +1,253 @@
+/* 全体のスタイル */
+body {
+    font-family: 'Noto Serif JP', serif;
+    background-image: url('images/background_sakura.png');
+    background-size: cover;
+    background-position: center;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: background-image 0.5s, background-color 0.5s;
+}
+
+/* フォントサイズの設定 */
+body.small {
+    font-size: 12px;
+}
+
+body.medium {
+    font-size: 16px;
+}
+
+body.large {
+    font-size: 20px;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.85);
+    transition: background-color 0.5s;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #D33F49;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+h2, h3 {
+    color: #333;
+}
+
+.section {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.section.visible {
+    display: flex;
+}
+
+.section.hidden {
+    display: none;
+}
+
+button {
+    background-color: #D33F49;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 15px 30px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    width: 80%;
+    max-width: 400px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+button:hover {
+    background-color: #E94B5F;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(2px);
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+input[type="text"], select {
+    font-size: 1rem;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    width: 80%;
+    max-width: 400px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+input::placeholder {
+    color: #999;
+}
+
+.tempo-control {
+    margin: 20px 0;
+    width: 80%;
+    max-width: 400px;
+    text-align: left;
+}
+
+.tempo-control label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#tempo {
+    width: 100%;
+}
+
+#score-board, #tuning-result {
+    font-size: 1.5rem;
+    margin: 15px 0;
+    color: #D33F49;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+#vexflow-container {
+    width: 100%;
+    overflow-x: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+#vexflow-container svg {
+    width: 100%;
+    height: auto;
+}
+
+#vexflow-container .vf-note {
+    transition: fill 0.3s;
+}
+
+#waveform-container {
+    width: 100%;
+    margin-top: 20px;
+    height: 150px;
+    background-color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.scale-tiles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.scale-tile {
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 15px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    min-width: 100px;
+    text-align: center;
+}
+
+.scale-tile:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+.scale-tile.selected {
+    background-color: #D33F49;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+#highscore-list {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    background-color: rgba(211, 63, 73, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.option-item {
+    margin: 15px 0;
+    width: 80%;
+    max-width: 400px;
+    text-align: left;
+}
+
+.option-item label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#metronome-volume {
+    width: 100%;
+}
+
+.game-buttons {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    max-width: 400px;
+    margin-top: 20px;
+}
+
+.game-buttons button {
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    button {
+        font-size: 1rem;
+        padding: 12px 24px;
+    }
+    input[type="text"], select, .tempo-control, .option-item, .scale-tiles {
+        width: 100%;
+        max-width: none;
+    }
+    #vexflow-container, #waveform-container {
+        width: 100%;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
